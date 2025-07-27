@@ -1,0 +1,208 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fondo-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* por si hay márgenes vacíos */
+}
+
+.juego {
+  position: relative;
+  aspect-ratio: 9 / 16; /* mantiene proporción vertical 1080x1920 */
+  height: 100%;
+  max-height: 100vh;
+  width: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.zona-izquierda, .zona-derecha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.orilla {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  width: 80px;
+  transition: transform 0.2s;
+}
+.item:hover {
+  transform: scale(1.1);
+}
+
+.barca-area {
+  position: absolute;
+  bottom: 120px;
+  transition: transform 2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barca-area.izquierda {
+  left: 15%;
+}
+
+.barca-area.derecha {
+  left: 65%;
+}
+
+.barca {
+  width: 150px;
+}
+
+.pasajero {
+  position: absolute;
+  bottom: 50%; /* ✅ baja al pasajero dentro de la barca */
+  left: 20%;
+  transform: translateX(-50%);
+  height: 30%; /* o lo que necesites visualmente */
+  z-index: 3;
+}
+
+.panel-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.mensaje {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.orillas {
+  position: absolute;
+  top: clamp(10%, 35vh, 60%);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  z-index: 2;
+}
+
+
+.zona-izquierda, .zona-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.item {
+  width: 70px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.item:hover {
+  transform: scale(1.1);
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 999;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.popup-ganar {
+  background-color: #28a745; /* verde */
+}
+
+.popup-perder {
+  background-color: #dc3545; /* rojo */
+}
+
+.popup button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-bienvenida {
+  background-color: #1e1e2f;
+  border: 2px solid #00d8ff;
+}
+
+.popup-bienvenida h2 {
+  color: #eee;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.popup ul {
+  list-style: disc;
+  margin-top: 0.5rem;
+  color: #eee;
+}
+
+.item.disabled {
+  pointer-events: none;
+  filter: grayscale(70%);
+  opacity: 0.95; /* casi como activo, pero visualmente distinguible */
+  transition: filter 0.2s ease;
+}
+.item.clickable:hover {
+  transform: scale(1.1);
+}
+
+.cronometro {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0,0,0,0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
